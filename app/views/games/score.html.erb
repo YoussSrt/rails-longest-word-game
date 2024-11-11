@@ -1,0 +1,21 @@
+<div class="container d-flex flex-column justify-content-center align-items-center mt-5" style="min-height: 80vh;">
+  <h1 class="text-center">Word Game Results</h1>
+
+  <!-- Affichage du score total -->
+  <p class="text-center"><strong>Total Score:</strong> <%= session[:total_score] || 0 %></p>
+
+  <p class="text-center"><strong>Word:</strong> <%= @word %></p>
+  <p class="text-center"><strong>Letters:</strong> <%= @letters.join(', ') %></p>
+
+  <% if @message %>
+    <p class="text-center <%= @status_class %>"><%= @message %></p>
+  <% end %>
+
+  <% if @score > 0 %>
+    <p class="text-center <%= @status_class %>"><strong>Score for this word:</strong> <%= @score %></p>
+  <% else %>
+    <p class="text-center <%= @status_class %>"><strong>No score for this word.</strong></p>
+  <% end %>
+
+  <%= link_to "Start a new game", new_game_path, class: "btn btn-primary mt-3" %>
+</div>

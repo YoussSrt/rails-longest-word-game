@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ /* Dans ton fichier stylesheets/application.css ou un fichier CSS séparé */
+.text-success {
+  color: #28a745; /* Vert clair */
+}
+
+.text-danger {
+  color: #dc3545; /* Rouge clair */
+}
+

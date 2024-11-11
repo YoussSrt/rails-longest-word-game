@@ -1,0 +1,33 @@
+<div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
+  <!-- Titre du jeu -->
+  <h1 class="text-center my-4">New Game</h1>
+
+  <!-- Affichage des lettres dans des petites cases carrées espacées -->
+  <div class="letter-container d-flex flex-wrap justify-content-center mb-4">
+    <% @letters.each do |letter| %>
+      <div class="letter-box bg-info text-white rounded d-flex align-items-center justify-content-center"
+           style="width: 50px; height: 50px; margin: 5px; font-size: 18px; text-align: center;">
+        <%= letter %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Question au-dessus du formulaire -->
+  <p class="text-center my-3">What is the longest word you can find?</p>
+
+  <!-- Formulaire pour soumettre un mot avec un champ de saisie plus large et un bouton Play -->
+  <div class="d-flex justify-content-center">
+    <form action="/score" method="post" data-turbo="false" class="d-flex align-items-center">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %> <!-- Champ caché pour la sécurité -->
+      <%= hidden_field_tag :letters, @letters.join(',') %> <!-- Envoi des lettres sous forme de chaîne -->
+
+      <!-- Champ de texte plus large pour saisir le mot -->
+      <input type="text" name="word" placeholder="Enter your word"
+             class="form-control me-2"
+             style="width: 300px; max-width: 100%;" />
+
+      <!-- Bouton Play -->
+      <button type="submit" class="btn btn-primary">Play</button>
+    </form>
+  </div>
+</div>
